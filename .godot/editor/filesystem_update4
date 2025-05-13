@@ -1,0 +1,6 @@
+res://main_node.tscn
+res://scenes/levels/key.tscn
+res://scenes/entities/character_body_2d.tscn
+res://scenes/level_01.tscn
+res://scenes/moving_platform.tscn
+res://scenes/levels/walking_enemy.tscn

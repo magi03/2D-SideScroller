@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0fitfbhauy3x"]
+
+[ext_resource type="Script" uid="uid://5bjmixcfs4f2" path="res://scenes/entities/character_body_2d.gd" id="1_gywni"]
+[ext_resource type="Texture2D" uid="uid://dntr1dd3vk7ga" path="res://assets/sprites/tilemap-characters.png" id="1_rkyj4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkyj4"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="Animation" id="Animation_233x1"]
+length = 0.20001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_gywni"]
+resource_name = "idle"
+length = 0.20001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vruwv"]
+resource_name = "jupming"
+length = 0.20001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_5jixi"]
+resource_name = "running"
+length = 0.20001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3g5w7"]
+_data = {
+&"RESET": SubResource("Animation_233x1"),
+&"idle": SubResource("Animation_gywni"),
+&"jupming": SubResource("Animation_vruwv"),
+&"running": SubResource("Animation_5jixi")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 7
+script = ExtResource("1_gywni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.53333, 0)
+scale = Vector2(1.89333, 2)
+texture = ExtResource("1_rkyj4")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 560
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.5
+drag_right_margin = 0.3
+drag_bottom_margin = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_rkyj4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3g5w7")
+}
