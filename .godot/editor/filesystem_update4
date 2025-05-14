@@ -1,11 +1,9 @@
-res://assets/scripts/classes/level.gd
-res://scenes/entities/obstacles/danger_zone.gd
-res://scenes/levels/level_01.tscn
-res://scenes/entities/character_body_2d.gd
-res://scenes/entities/obstacles/danger_zone.tscn
-res://scenes/entities/character_body_2d.tscn
 res://main_node.tscn
 res://scenes/levels/key.tscn
+res://scenes/entities/character_body_2d.tscn
+res://scenes/levels/level_01.tscn
 res://scenes/moving_platform.tscn
 res://scenes/levels/walking_enemy.tscn
 res://scenes/UI/main_menu.tscn
+res://scenes/entities/obstacles/danger_zone.tscn
+res://scenes/entities/character_body_2d.gd

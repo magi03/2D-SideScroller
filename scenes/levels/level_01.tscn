@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cp8rr6higsvmc"]
+[gd_scene load_steps=18 format=3 uid="uid://cp8rr6higsvmc"]
 
 [ext_resource type="Script" uid="uid://cx2yg4vosiomn" path="res://assets/scripts/classes/level.gd" id="1_uvc87"]
 [ext_resource type="Texture2D" uid="uid://dt157phfvn51m" path="res://assets/sprites/tilemap.png" id="2_qdh5e"]
 [ext_resource type="Texture2D" uid="uid://dfudybjauh4f0" path="res://assets/sprites/tilemap-backgrounds.png" id="3_50wog"]
 [ext_resource type="PackedScene" uid="uid://w80ghak1gf05" path="res://scenes/entities/obstacles/danger_zone.tscn" id="3_qdh5e"]
 [ext_resource type="PackedScene" uid="uid://c0fitfbhauy3x" path="res://scenes/entities/character_body_2d.tscn" id="4_1ey3t"]
+[ext_resource type="PackedScene" uid="uid://d18au0v2hae73" path="res://scenes/levels/walking_enemy.tscn" id="6_50wog"]
+[ext_resource type="PackedScene" uid="uid://4jpc0jfcdyvr" path="res://scenes/levels/key.tscn" id="7_1ey3t"]
+[ext_resource type="PackedScene" uid="uid://cw05xajde1gld" path="res://scenes/moving_platform.tscn" id="8_t0hvh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nr3cb"]
 texture = ExtResource("2_qdh5e")
@@ -398,6 +401,29 @@ texture_region_size = Vector2i(24, 24)
 tile_size = Vector2i(24, 24)
 sources/0 = SubResource("TileSetAtlasSource_qgxqk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ey3t"]
+
+[sub_resource type="Curve2D" id="Curve2D_kfebt"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 242, -6, 0, 0, 0, 0, 0, -1)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_r72dd"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -94, 0, 0, 0, 0, 120, -97, 0, 0, 0, 0, 122, 1, 0, 0, 0, 0, 1, 0)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_ijn0p"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -105, 0, 0, 0, 0, 0, 1)
+}
+point_count = 3
+
 [node name="Level" type="Node2D" node_paths=PackedStringArray("level_start_pos")]
 script = ExtResource("1_uvc87")
 level_id = 1
@@ -435,3 +461,38 @@ position = Vector2(-30, -25)
 
 [node name="PlayerStart" type="Node2D" parent="."]
 position = Vector2(-65, -25)
+
+[node name="Walking enemy" parent="." instance=ExtResource("6_50wog")]
+position = Vector2(1106, 37)
+
+[node name="DangerZone" parent="Walking enemy" instance=ExtResource("3_qdh5e")]
+position = Vector2(2, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walking enemy/DangerZone"]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_1ey3t")
+
+[node name="Keys" type="Node2D" parent="."]
+
+[node name="Key" parent="Keys" instance=ExtResource("7_1ey3t")]
+position = Vector2(80, -85)
+
+[node name="Key2" parent="Keys" instance=ExtResource("7_1ey3t")]
+position = Vector2(373, -229)
+
+[node name="Key3" parent="Keys" instance=ExtResource("7_1ey3t")]
+position = Vector2(934, -151)
+
+[node name="MovingPlatforms" type="Node2D" parent="."]
+
+[node name="Moving_platform" parent="MovingPlatforms" instance=ExtResource("8_t0hvh")]
+position = Vector2(622, -139)
+curve = SubResource("Curve2D_kfebt")
+
+[node name="Moving_platform2" parent="MovingPlatforms" instance=ExtResource("8_t0hvh")]
+position = Vector2(118, -133)
+curve = SubResource("Curve2D_r72dd")
+
+[node name="Moving_platform3" parent="MovingPlatforms" instance=ExtResource("8_t0hvh")]
+position = Vector2(-154, -7)
+curve = SubResource("Curve2D_ijn0p")
