@@ -11,7 +11,7 @@ extends CharacterBody2D
 var is_jumping : bool = false
 var jump_timer: float = 0
 var coyote_timer : float = 0 
-#var can_control : bool = true
+var can_control : bool = true
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -19,7 +19,7 @@ var coyote_timer : float = 0
 
 
 func _physics_process(delta: float) -> void:
-	#if not can_control: return
+	if not can_control: return
 	# Add the gravity.
 	if not is_on_floor() and not is_jumping:
 		velocity +=get_gravity() * gravity_multiplier*delta
@@ -63,3 +63,16 @@ func handle_animations(direction : float) -> void:
 		animation_player.play("jupming")
 	else:
 		animation_player.play("idle")
+
+func handle_danger() -> void:
+	print("Player died!")
+	visible = false
+	can_control = false
+	
+	await get_tree().create_timer(1).timeout
+	reset_player()
+	
+func reset_player() -> void:
+	global_position = LevelManager.loaded_level.level_start_pos.global_position
+	visible = true
+	can_control = true

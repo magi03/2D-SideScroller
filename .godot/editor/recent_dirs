@@ -1,4 +1,7 @@
+res://scenes/entities/obstacles
 res://scenes/entities
+res://assets/scripts/manager
+res://scenes/UI
 res://scenes
 res://scenes/levels
 res://assets/sprites

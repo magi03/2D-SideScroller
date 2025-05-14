@@ -1,67 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0mcjss5njl7o"]
+[gd_scene load_steps=5 format=3 uid="uid://b0mcjss5njl7o"]
 
-[ext_resource type="Script" uid="uid://b4a0ey1oq4j35" path="res://scenes/entities/moving_platform.gd" id="1_621oa"]
-[ext_resource type="PackedScene" uid="uid://cp8rr6higsvmc" path="res://scenes/level_01.tscn" id="1_lwogq"]
-[ext_resource type="PackedScene" uid="uid://c0fitfbhauy3x" path="res://scenes/entities/character_body_2d.tscn" id="2_dhalm"]
-[ext_resource type="PackedScene" uid="uid://4jpc0jfcdyvr" path="res://scenes/levels/key.tscn" id="3_bxfy6"]
-[ext_resource type="PackedScene" uid="uid://cw05xajde1gld" path="res://scenes/moving_platform.tscn" id="5_wywo8"]
-[ext_resource type="PackedScene" uid="uid://d18au0v2hae73" path="res://scenes/levels/walking_enemy.tscn" id="6_wywo8"]
+[ext_resource type="Script" uid="uid://kfpdilbkrrta" path="res://scenes/entities/main.gd" id="1_dhalm"]
+[ext_resource type="Script" uid="uid://dqb875ff7lk00" path="res://assets/scripts/classes/level_data.gd" id="2_bxfy6"]
+[ext_resource type="PackedScene" uid="uid://df3o23gt517t8" path="res://scenes/UI/main_menu.tscn" id="2_dhalm"]
 
-[sub_resource type="Curve2D" id="Curve2D_621oa"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -83, 0, 0, 0, 0, 0, 0)
-}
-point_count = 3
+[sub_resource type="Resource" id="Resource_scfaf"]
+script = ExtResource("2_bxfy6")
+level_id = 1
+level_name = "The First Level"
+level_completed = false
+level_unlocked = false
+level_path = "levels/level_01"
+metadata/_custom_type_script = "uid://dqb875ff7lk00"
 
-[sub_resource type="Curve2D" id="Curve2D_wywo8"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 229, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 3
+[node name="Main" type="Node"]
+script = ExtResource("1_dhalm")
+avaliable_levels = Array[ExtResource("2_bxfy6")]([SubResource("Resource_scfaf")])
 
-[sub_resource type="Curve2D" id="Curve2D_yjirp"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -46, 0, 0, 0, 0, -1, -95, 0, 0, 0, 0, 122, -97, 0, 0, 0, 0, 124, 0, 0, 0, 0, 0, 0, 1)
-}
-point_count = 6
+[node name="UI Layer" type="CanvasLayer" parent="."]
 
-[node name="Main Node" type="Node"]
-script = ExtResource("1_621oa")
+[node name="MainMenu" parent="UI Layer" instance=ExtResource("2_dhalm")]
+size_flags_horizontal = 4
 
 [node name="2DScene" type="Node2D" parent="."]
-
-[node name="Level" parent="2DScene" instance=ExtResource("1_lwogq")]
-
-[node name="Player2" parent="2DScene" instance=ExtResource("2_dhalm")]
-position = Vector2(-84, -31)
-
-[node name="Key" type="Node2D" parent="2DScene"]
-
-[node name="Key" parent="2DScene/Key" instance=ExtResource("3_bxfy6")]
-position = Vector2(87, -83)
-
-[node name="Key2" parent="2DScene/Key" instance=ExtResource("3_bxfy6")]
-position = Vector2(377, -227)
-
-[node name="Key3" parent="2DScene/Key" instance=ExtResource("3_bxfy6")]
-position = Vector2(336, -83)
-
-[node name="MovingPlatforms" type="Node2D" parent="."]
-
-[node name="Moving_platform" parent="MovingPlatforms" instance=ExtResource("5_wywo8")]
-position = Vector2(-163, 13)
-curve = SubResource("Curve2D_621oa")
-
-[node name="Moving_platform2" parent="MovingPlatforms" instance=ExtResource("5_wywo8")]
-position = Vector2(610, -142)
-curve = SubResource("Curve2D_wywo8")
-
-[node name="Moving_platform3" parent="MovingPlatforms" instance=ExtResource("5_wywo8")]
-position = Vector2(118, -105)
-curve = SubResource("Curve2D_yjirp")
-
-[node name="Walking enemy" parent="." instance=ExtResource("6_wywo8")]
-position = Vector2(1222, 0)

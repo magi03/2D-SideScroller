@@ -15,6 +15,10 @@ run/main_scene="uid://b0mcjss5njl7o"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/sprites/icon.svg"
 
+[autoload]
+
+LevelManager="*res://assets/scripts/manager/LevelManager.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -49,6 +53,7 @@ move_right={
 2d_physics/layer_1="static"
 2d_physics/layer_2="dynamic"
 2d_physics/layer_3="danger"
+2d_physics/layer_4="player"
 
 [rendering]
 
