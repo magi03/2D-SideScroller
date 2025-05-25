@@ -2,6 +2,7 @@ extends Node
 
 var levels : Array[LevelData]
 
+
 var main_scene: Node2D=null
 var loaded_level: Level = null
 
@@ -39,3 +40,6 @@ func get_level_data_by_id(id:int) -> LevelData:
 			level_to_return = lvl
 			
 	return level_to_return
+
+
+	

@@ -1,6 +1,8 @@
-extends Area2D
+extends Node
 
-@onready var game_manager: Node = %GameManager
+var key = 0
+@onready var score_label: Label = $ScoreLabel
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +14,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		game_manager.key_add()
-		queue_free()
+func key_add():
+	key += 1
+	score_label.text = "Du hast " +str(key) + " / 6 Schlüssel gesammelt"
