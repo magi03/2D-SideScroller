@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crx14xx703hct"]
+
+[ext_resource type="PackedScene" uid="uid://c0fitfbhauy3x" path="res://scenes/entities/character_body_2d.tscn" id="2_41wfo"]
+
+[sub_resource type="TileSet" id="TileSet_733bv"]
+
+[node name="level2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_41wfo")]
+position = Vector2(109, 115)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_733bv")
+format = 2

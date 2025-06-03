@@ -1,16 +1,5 @@
 extends Area2D
 
-"""
-@export var load_level: String
-@export var anim:AnimatedSprite2D
-
-
-
-func _on_body_entered(body: Node2D) -> void:
-	anim.play("open")
-	print(body.name) # Replace with function body.
-"""
-
 
 @export var load_level: String
 @export var anim: AnimatedSprite2D
@@ -22,5 +11,6 @@ func _on_body_entered(body: Node2D) -> void:
 		if game_manager.key >= 6:
 			anim.play("open")
 			print("Door opening for", body.name)
+			get_tree().change_scene_to_file(load_level)
 		else:
 			print("Not enough keys:", game_manager.key)

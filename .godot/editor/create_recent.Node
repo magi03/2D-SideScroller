@@ -1,6 +1,10 @@
 CollisionShape2D
-AnimatedSprite2D
+Sprite2D
 Area2D
+TileMap
+AnimationPlayer
+AudioStreamPlayer2D
+AnimatedSprite2D
 CanvasLayer
 Node
 Label
@@ -8,7 +12,3 @@ TextureRect
 Node2D
 Button
 VBoxContainer
-MarginContainer
-Timer
-CollisionPolygon2D
-RayCast2D

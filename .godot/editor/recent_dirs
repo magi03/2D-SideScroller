@@ -1,5 +1,6 @@
-res://scenes/entities
 res://scenes/levels
+res://scenes/entities
+res://scenes/entities/level2
 res://scenes/entities/obstacles
 res://assets/scripts/manager
 res://scenes/UI

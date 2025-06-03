@@ -1,10 +1,5 @@
 extends Area2D
 
-@onready var game_manager: Node = %GameManager
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -16,5 +11,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		game_manager.key_add()
-		animation_player.play("pickup")
+		if body.has_method("enable_double_jump"):
+			body.enable_double_jump()
+		queue_free() # This removes the shoe from the scene

@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var coyote_time : float = 0.075
 @export var gravity_multiplier : float = 2.0
 
+var has_double_jump_power: bool = false
+var extra_jump_available: bool = false
 
 var is_jumping : bool = false
 var jump_timer: float = 0
@@ -16,6 +18,9 @@ var can_control : bool = true
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+func enable_double_jump():
+	has_double_jump_power = true
+	extra_jump_available = true
 
 
 func _physics_process(delta: float) -> void:
@@ -28,17 +33,24 @@ func _physics_process(delta: float) -> void:
 		coyote_timer = 0
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_timer < coyote_time):
-		velocity.y = jump_force
-		is_jumping = true
-	elif Input.is_action_just_pressed("jump") and is_jumping:
-		velocity.y = jump_force
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or coyote_timer < coyote_time:
+			velocity.y = jump_force
+			is_jumping = true
+			extra_jump_available = has_double_jump_power # Reset double jump when grounded
+	#elif Input.is_action_just_pressed("jump") and is_jumping:
+	#	velocity.y = jump_force
+		elif has_double_jump_power and extra_jump_available:
+			velocity.y = jump_force
+			is_jumping = true
+			extra_jump_available = false
 		
 	if is_jumping and Input.is_action_just_pressed("jump") and jump_timer<jump_time:
 		jump_timer += delta
 	else: 
 		is_jumping = false
 		jump_timer = 0 
+
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

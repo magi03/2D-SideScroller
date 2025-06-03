@@ -18,6 +18,7 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 LevelManager="*res://assets/scripts/manager/LevelManager.gd"
+Musik="*res://scenes/levels/musik.tscn"
 
 [display]
 
