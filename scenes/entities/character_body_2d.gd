@@ -15,13 +15,15 @@ var jump_timer: float = 0
 var coyote_timer : float = 0 
 var can_control : bool = true
 
+
+var npc_in_ranage = false
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func enable_double_jump():
 	has_double_jump_power = true
 	extra_jump_available = true
-
 
 func _physics_process(delta: float) -> void:
 	if not can_control: return
@@ -66,6 +68,11 @@ func _physics_process(delta: float) -> void:
 	
 	handle_animations(direction)
 	
+	if npc_in_ranage == true:
+		if Input.is_action_just_pressed("ui_accept"):
+			DialogueManager.show_example_dialogue_balloon(load("res://main.dialogue"), "main")
+			return
+	
 	move_and_slide()
 	
 func handle_animations(direction : float) -> void:
@@ -75,7 +82,7 @@ func handle_animations(direction : float) -> void:
 		animation_player.play("jupming")
 	else:
 		animation_player.play("idle")
-
+"""
 func handle_danger() -> void:
 	print("Player died!")
 	visible = false
@@ -83,8 +90,47 @@ func handle_danger() -> void:
 	
 	await get_tree().create_timer(1).timeout
 	reset_player()
+"""
+func handle_danger() -> void:
+	print("Player died!")
+	visible = false
+	can_control = false
+	velocity = Vector2.ZERO
+
+	await get_tree().create_timer(1.0).timeout
+
+	reset_player()  # Just reset the player's state and position
+
 	
+#func reset_player() -> void:
+#	global_position = LevelManager.loaded_level.level_start_pos.global_position
+#	visible = true
+#	can_control = true
+
 func reset_player() -> void:
-	global_position = LevelManager.loaded_level.level_start_pos.global_position
+	await get_tree().process_frame  # Wait one frame to avoid collision issues
+
+	if LevelManager.loaded_level and is_instance_valid(LevelManager.loaded_level.level_start_pos):
+		global_position = LevelManager.loaded_level.level_start_pos.global_position
+	else:
+		print("No valid level_start_pos! Could not reset player position.")
+
+	velocity = Vector2.ZERO
 	visible = true
 	can_control = true
+	is_jumping = false
+	extra_jump_available = has_double_jump_power
+	animation_player.play("idle")
+
+
+
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body.has_method("npc"):
+		npc_in_ranage = true
+		
+
+
+func _on_detection_area_body_exited(body: Node2D) -> void:
+	if body.has_method("npc"):
+		npc_in_ranage = false

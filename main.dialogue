@@ -1,0 +1,43 @@
+~ main
+if global_dialogue.given_book == false
+	Meister Grünbart: Ah... ein Reisender! Was willst du von einem alten, weisen Mann wie mir?
+	- Wer bist du?
+		Meister Grünbart: Ich bin Meister Grünbart, der legendäre Magier von Nebelstein.
+		- Ich glaube, ich habe etwas für dich.
+			Meister Grünbart: Ein Geschenk? Für mich?
+			- Ja, ich habe dieses alte Zauberbuch gefunden.
+				if global_dialogue.found_book == true:
+					Meister Grünbart: Mein verlorenes Buch! Ich wusste doch, ich hab es irgendwo gelassen!
+					Meister Grünbart: Du bist wahrlich ein Held. Hier ist ein Geheimnis. Du kannst meine Kristalle finden – sie helfen dir in die Zukunft!
+					set global_dialogue.given_book = true
+					=> END
+				if global_dialogue.found_book == false:
+					Meister Grünbart: Hmm... das ist kein Zauberbuch. Das ist ein Kochrezept!
+					Meister Grünbart: Du willst mich wohl zum Narren halten?
+					Meister Grünbart: Dann nehme ich dir deine Springkraft weg.
+					#set has_double_jump_power = false
+					=> END
+			- Nein, war nur ein Scherz. => END
+		- Auf Wiedersehen. => END
+	- Ich glaube, ich habe etwas für dich.
+		Meister Grünbart: Ein Geschenk? Für mich?
+		- Ja, ich habe dieses alte Zauberbuch gefunden.
+			if global_dialogue.found_book == true:
+				Meister Grünbart: Mein verlorenes Buch! Ich wusste doch, ich hab es irgendwo gelassen!
+				Meister Grünbart: Du bist wahrlich ein Held. Als Dank  hier ist ein Geheimnis. Du kannst meine Kristalle finden – sie helfen dir in die Zukunft!
+				set global_dialogue.given_book = true
+				=> END
+			if global_dialogue.found_book == false:
+				Meister Grünbart: Das ist doch nur ein Einkaufszettel! Willst du mich verspotten?
+				Meister Grünbart: Dafür zahlst du.
+				#set has_double_jump_power = false
+				=> END
+		- Nein, war nur ein Scherz. => END
+	- Auf Wiedersehen. => END
+else:
+	Meister Grünbart: Oh, mein Lieblingsabenteurer!
+	Meister Grünbart: Wie geht es meinem Buch? Hoffentlich nicht wieder verloren?
+	Meister Grünbart: Ich hoffe, die Kristale hast du gefunden!
+	=> END
+
+=> END

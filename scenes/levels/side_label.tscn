@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2gygqdfs3ojx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owwjt"]
+bg_color = Color(0.5148, 0.65, 0.338, 0.321569)
+
+[node name="Label" type="Label"]
+texture_filter = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_owwjt")
+text = "Item"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -19,6 +19,23 @@ config/icon="res://assets/sprites/icon.svg"
 
 LevelManager="*res://assets/scripts/manager/LevelManager.gd"
 Musik="*res://scenes/levels/musik.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+global_dialogue="*res://global_dialogue.gd"
+Notification="*res://scenes/levels/notification.tscn"
+
+[dialogue_manager]
+
+editor/new_file_template="~ this_is_a_node_title
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => this_is_a_node_title
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END"
 
 [display]
 
@@ -27,6 +44,10 @@ window/size/viewport_height=360
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
@@ -48,6 +69,10 @@ move_right={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://main.dialogue")
 
 [layer_names]
 

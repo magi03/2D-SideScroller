@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcajmx1hryumr"]
 
 [ext_resource type="Script" uid="uid://ckt04oto2dpv0" path="res://scenes/entities/power_up.gd" id="1_trclb"]
-[ext_resource type="Texture2D" uid="uid://cvxslvyv514ux" path="res://assets/sprites/shoe.png" id="2_6yjd5"]
+[ext_resource type="Texture2D" uid="uid://7by4tdibkhyf" path="res://assets/sprites/powerup.png" id="2_trclb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ti10"]
-size = Vector2(30, 13)
+size = Vector2(30, 20)
 
 [node name="PowerUp" type="Area2D"]
 collision_mask = 8
 script = ExtResource("1_trclb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(17, 14.5)
+position = Vector2(17, 18)
 shape = SubResource("RectangleShape2D_2ti10")
 
 [node name="Shoe" type="Sprite2D" parent="."]
-position = Vector2(16.875, 14)
-scale = Vector2(0.03025, 0.028)
-texture = ExtResource("2_6yjd5")
+position = Vector2(17, 15)
+scale = Vector2(0.0126711, 0.0104816)
+texture = ExtResource("2_trclb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

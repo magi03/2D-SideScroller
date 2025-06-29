@@ -1,0 +1,501 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_rovtq"]
+
+[resource]
+script = ExtResource("1_rovtq")
+using_states = PackedStringArray()
+titles = {
+"main": "1"
+}
+character_names = PackedStringArray("Meister Grünbart")
+first_title = "0"
+lines = {
+"0": {
+&"id": "0",
+&"next_id": "1",
+&"type": "title"
+},
+"1": {
+&"condition": {
+&"expression": Array[Dictionary]([{
+&"i": 3,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 18,
+&"type": &"dot"
+}, {
+&"i": 19,
+&"type": &"variable",
+&"value": "given_book"
+}, {
+&"i": 30,
+&"type": &"comparison",
+&"value": "=="
+}, {
+&"i": 33,
+&"type": &"variable",
+&"value": "false"
+}])
+},
+&"id": "1",
+&"next_id": "2",
+&"next_id_after": "42",
+&"next_sibling_id": "36",
+&"type": "condition"
+},
+"10": {
+&"character": "Meister Grünbart",
+&"id": "10",
+&"next_id": "11",
+&"text": "Du bist wahrlich ein Held. Hier ist ein Geheimnis. Du kannst meine Kristalle finden – sie helfen dir in die Zukunft!",
+&"type": "dialogue"
+},
+"11": {
+&"id": "11",
+&"mutation": {
+&"expression": Array[Dictionary]([{
+&"i": 4,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 19,
+&"type": &"dot"
+}, {
+&"i": 20,
+&"type": &"variable",
+&"value": "given_book"
+}, {
+&"i": 31,
+&"type": &"assignment",
+&"value": "="
+}, {
+&"i": 33,
+&"type": &"variable",
+&"value": "true"
+}]),
+&"is_blocking": true
+},
+&"next_id": "12",
+&"type": "mutation"
+},
+"12": {
+&"id": "12",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"13": {
+&"condition": {
+&"expression": Array[Dictionary]([{
+&"i": 7,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 22,
+&"type": &"dot"
+}, {
+&"i": 23,
+&"type": &"variable",
+&"value": "found_book"
+}, {
+&"i": 34,
+&"type": &"comparison",
+&"value": "=="
+}, {
+&"i": 37,
+&"type": &"variable",
+&"value": "false"
+}])
+},
+&"id": "13",
+&"next_id": "14",
+&"next_id_after": "42",
+&"type": "condition"
+},
+"14": {
+&"character": "Meister Grünbart",
+&"id": "14",
+&"next_id": "15",
+&"text": "Hmm... das ist kein Zauberbuch. Das ist ein Kochrezept!",
+&"type": "dialogue"
+},
+"15": {
+&"character": "Meister Grünbart",
+&"id": "15",
+&"next_id": "16",
+&"text": "Du willst mich wohl zum Narren halten?",
+&"type": "dialogue"
+},
+"16": {
+&"character": "Meister Grünbart",
+&"id": "16",
+&"next_id": "18",
+&"text": "Dann nehme ich dir deine Springkraft weg.",
+&"type": "dialogue"
+},
+"17": {
+&"id": "17",
+&"next_id": "18",
+&"type": ""
+},
+"18": {
+&"id": "18",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"19": {
+&"id": "19",
+&"next_id": "end",
+&"text": "Nein, war nur ein Scherz.",
+&"type": "response"
+},
+"2": {
+&"character": "Meister Grünbart",
+&"id": "2",
+&"next_id": "3",
+&"text": "Ah... ein Reisender! Was willst du von einem alten, weisen Mann wie mir?",
+&"type": "dialogue"
+},
+"20": {
+&"id": "20",
+&"next_id": "end",
+&"text": "Auf Wiedersehen.",
+&"type": "response"
+},
+"21": {
+&"id": "21",
+&"next_id": "22",
+&"text": "Ich glaube, ich habe etwas für dich.",
+&"type": "response"
+},
+"22": {
+&"character": "Meister Grünbart",
+&"id": "22",
+&"next_id": "23",
+&"text": "Ein Geschenk? Für mich?",
+&"type": "dialogue"
+},
+"23": {
+&"id": "23",
+&"next_id": "24",
+&"responses": PackedStringArray("23", "34"),
+&"text": "Ja, ich habe dieses alte Zauberbuch gefunden.",
+&"type": "response"
+},
+"24": {
+&"condition": {
+&"expression": Array[Dictionary]([{
+&"i": 6,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 21,
+&"type": &"dot"
+}, {
+&"i": 22,
+&"type": &"variable",
+&"value": "found_book"
+}, {
+&"i": 33,
+&"type": &"comparison",
+&"value": "=="
+}, {
+&"i": 36,
+&"type": &"variable",
+&"value": "true"
+}])
+},
+&"id": "24",
+&"next_id": "25",
+&"next_id_after": "29",
+&"type": "condition"
+},
+"25": {
+&"character": "Meister Grünbart",
+&"id": "25",
+&"next_id": "26",
+&"text": "Mein verlorenes Buch! Ich wusste doch, ich hab es irgendwo gelassen!",
+&"type": "dialogue"
+},
+"26": {
+&"character": "Meister Grünbart",
+&"id": "26",
+&"next_id": "27",
+&"text": "Du bist wahrlich ein Held. Als Dank  hier ist ein Geheimnis. Du kannst meine Kristalle finden – sie helfen dir in die Zukunft!",
+&"type": "dialogue"
+},
+"27": {
+&"id": "27",
+&"mutation": {
+&"expression": Array[Dictionary]([{
+&"i": 4,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 19,
+&"type": &"dot"
+}, {
+&"i": 20,
+&"type": &"variable",
+&"value": "given_book"
+}, {
+&"i": 31,
+&"type": &"assignment",
+&"value": "="
+}, {
+&"i": 33,
+&"type": &"variable",
+&"value": "true"
+}]),
+&"is_blocking": true
+},
+&"next_id": "28",
+&"type": "mutation"
+},
+"28": {
+&"id": "28",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"29": {
+&"condition": {
+&"expression": Array[Dictionary]([{
+&"i": 6,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 21,
+&"type": &"dot"
+}, {
+&"i": 22,
+&"type": &"variable",
+&"value": "found_book"
+}, {
+&"i": 33,
+&"type": &"comparison",
+&"value": "=="
+}, {
+&"i": 36,
+&"type": &"variable",
+&"value": "false"
+}])
+},
+&"id": "29",
+&"next_id": "30",
+&"next_id_after": "42",
+&"type": "condition"
+},
+"3": {
+&"id": "3",
+&"next_id": "4",
+&"responses": PackedStringArray("3", "21", "35"),
+&"text": "Wer bist du?",
+&"type": "response"
+},
+"30": {
+&"character": "Meister Grünbart",
+&"id": "30",
+&"next_id": "31",
+&"text": "Das ist doch nur ein Einkaufszettel! Willst du mich verspotten?",
+&"type": "dialogue"
+},
+"31": {
+&"character": "Meister Grünbart",
+&"id": "31",
+&"next_id": "33",
+&"text": "Dafür zahlst du.",
+&"type": "dialogue"
+},
+"32": {
+&"id": "32",
+&"next_id": "33",
+&"type": ""
+},
+"33": {
+&"id": "33",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"34": {
+&"id": "34",
+&"next_id": "end",
+&"text": "Nein, war nur ein Scherz.",
+&"type": "response"
+},
+"35": {
+&"id": "35",
+&"next_id": "end",
+&"text": "Auf Wiedersehen.",
+&"type": "response"
+},
+"36": {
+&"condition": {},
+&"id": "36",
+&"next_id": "37",
+&"next_id_after": "42",
+&"type": "condition"
+},
+"37": {
+&"character": "Meister Grünbart",
+&"id": "37",
+&"next_id": "38",
+&"text": "Oh, mein Lieblingsabenteurer!",
+&"type": "dialogue"
+},
+"38": {
+&"character": "Meister Grünbart",
+&"id": "38",
+&"next_id": "39",
+&"text": "Wie geht es meinem Buch? Hoffentlich nicht wieder verloren?",
+&"type": "dialogue"
+},
+"39": {
+&"character": "Meister Grünbart",
+&"id": "39",
+&"next_id": "40",
+&"text": "Ich hoffe, die Kristale hast du gefunden!",
+&"type": "dialogue"
+},
+"4": {
+&"character": "Meister Grünbart",
+&"id": "4",
+&"next_id": "5",
+&"text": "Ich bin Meister Grünbart, der legendäre Magier von Nebelstein.",
+&"type": "dialogue"
+},
+"40": {
+&"id": "40",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"41": {
+&"id": "41",
+&"next_id": "42",
+&"type": ""
+},
+"42": {
+&"id": "42",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"43": {
+&"id": "43",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"5": {
+&"id": "5",
+&"next_id": "6",
+&"responses": PackedStringArray("5", "20"),
+&"text": "Ich glaube, ich habe etwas für dich.",
+&"type": "response"
+},
+"6": {
+&"character": "Meister Grünbart",
+&"id": "6",
+&"next_id": "7",
+&"text": "Ein Geschenk? Für mich?",
+&"type": "dialogue"
+},
+"7": {
+&"id": "7",
+&"next_id": "8",
+&"responses": PackedStringArray("7", "19"),
+&"text": "Ja, ich habe dieses alte Zauberbuch gefunden.",
+&"type": "response"
+},
+"8": {
+&"condition": {
+&"expression": Array[Dictionary]([{
+&"i": 7,
+&"type": &"variable",
+&"value": "global_dialogue"
+}, {
+&"i": 22,
+&"type": &"dot"
+}, {
+&"i": 23,
+&"type": &"variable",
+&"value": "found_book"
+}, {
+&"i": 34,
+&"type": &"comparison",
+&"value": "=="
+}, {
+&"i": 37,
+&"type": &"variable",
+&"value": "true"
+}])
+},
+&"id": "8",
+&"next_id": "9",
+&"next_id_after": "13",
+&"type": "condition"
+},
+"9": {
+&"character": "Meister Grünbart",
+&"id": "9",
+&"next_id": "10",
+&"text": "Mein verlorenes Buch! Ich wusste doch, ich hab es irgendwo gelassen!",
+&"type": "dialogue"
+}
+}
+raw_text = "~ main
+if global_dialogue.given_book == false
+	Meister Grünbart: Ah... ein Reisender! Was willst du von einem alten, weisen Mann wie mir?
+	- Wer bist du?
+		Meister Grünbart: Ich bin Meister Grünbart, der legendäre Magier von Nebelstein.
+		- Ich glaube, ich habe etwas für dich.
+			Meister Grünbart: Ein Geschenk? Für mich?
+			- Ja, ich habe dieses alte Zauberbuch gefunden.
+				if global_dialogue.found_book == true:
+					Meister Grünbart: Mein verlorenes Buch! Ich wusste doch, ich hab es irgendwo gelassen!
+					Meister Grünbart: Du bist wahrlich ein Held. Hier ist ein Geheimnis. Du kannst meine Kristalle finden – sie helfen dir in die Zukunft!
+					set global_dialogue.given_book = true
+					=> END
+				if global_dialogue.found_book == false:
+					Meister Grünbart: Hmm... das ist kein Zauberbuch. Das ist ein Kochrezept!
+					Meister Grünbart: Du willst mich wohl zum Narren halten?
+					Meister Grünbart: Dann nehme ich dir deine Springkraft weg.
+					#set has_double_jump_power = false
+					=> END
+			- Nein, war nur ein Scherz. => END
+		- Auf Wiedersehen. => END
+	- Ich glaube, ich habe etwas für dich.
+		Meister Grünbart: Ein Geschenk? Für mich?
+		- Ja, ich habe dieses alte Zauberbuch gefunden.
+			if global_dialogue.found_book == true:
+				Meister Grünbart: Mein verlorenes Buch! Ich wusste doch, ich hab es irgendwo gelassen!
+				Meister Grünbart: Du bist wahrlich ein Held. Als Dank  hier ist ein Geheimnis. Du kannst meine Kristalle finden – sie helfen dir in die Zukunft!
+				set global_dialogue.given_book = true
+				=> END
+			if global_dialogue.found_book == false:
+				Meister Grünbart: Das ist doch nur ein Einkaufszettel! Willst du mich verspotten?
+				Meister Grünbart: Dafür zahlst du.
+				#set has_double_jump_power = false
+				=> END
+		- Nein, war nur ein Scherz. => END
+	- Auf Wiedersehen. => END
+else:
+	Meister Grünbart: Oh, mein Lieblingsabenteurer!
+	Meister Grünbart: Wie geht es meinem Buch? Hoffentlich nicht wieder verloren?
+	Meister Grünbart: Ich hoffe, die Kristale hast du gefunden!
+	=> END
+
+=> END"
+metadata/dialogue_manager_version = "3.6.3"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://des7rppxg0vd4"]
+
+[ext_resource type="Script" uid="uid://c8giy24c0dwbe" path="res://scenes/entities/magic_book.gd" id="1_3vo5j"]
+[ext_resource type="Texture2D" uid="uid://bxkgobbsxml05" path="res://assets/sprites/book.png" id="2_f16o6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o1os"]
+size = Vector2(59, 45)
+
+[node name="MagicBook" type="Area2D"]
+collision_mask = 9
+script = ExtResource("1_3vo5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(47.5, 44.5)
+shape = SubResource("RectangleShape2D_7o1os")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(47.5, 44.375)
+scale = Vector2(0.0356, 0.0341)
+texture = ExtResource("2_f16o6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

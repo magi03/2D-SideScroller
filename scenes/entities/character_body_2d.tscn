@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0fitfbhauy3x"]
+[gd_scene load_steps=10 format=3 uid="uid://c0fitfbhauy3x"]
 
 [ext_resource type="Script" uid="uid://5bjmixcfs4f2" path="res://scenes/entities/character_body_2d.gd" id="1_gywni"]
 [ext_resource type="Texture2D" uid="uid://dntr1dd3vk7ga" path="res://assets/sprites/tilemap-characters.png" id="1_rkyj4"]
@@ -85,6 +85,9 @@ _data = {
 &"running": SubResource("Animation_5jixi")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gywni"]
+radius = 38.8973
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 10
 collision_mask = 7
@@ -117,3 +120,12 @@ shape = SubResource("CapsuleShape2D_rkyj4")
 libraries = {
 &"": SubResource("AnimationLibrary_3g5w7")
 }
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(-2, 1)
+shape = SubResource("CircleShape2D_gywni")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

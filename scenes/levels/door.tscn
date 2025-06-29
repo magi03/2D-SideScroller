@@ -30,6 +30,7 @@ animations = [{
 collision_layer = 3
 collision_mask = 8
 script = ExtResource("1_wdsje")
+load_level = "res://scenes/levels/level_02.tscn"
 anim = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
